@@ -14,7 +14,6 @@ import UIKit
     @objc optional func starWarsTextViewDidFinishScrolling(_ textView:StarWarsTextView)
 }
 
-@IBDesignable
 open class StarWarsTextView : UITextView
 {
     public weak var starWarsDelegate:StarWarsTextViewDelegate? = nil
