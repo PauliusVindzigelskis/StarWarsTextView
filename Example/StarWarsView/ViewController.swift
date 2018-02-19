@@ -24,14 +24,14 @@ class ViewController: UIViewController, StarWarsTextViewDelegate
     }
     
     @IBAction func animatePressed(_ sender: UIButton) {
-//        self.textView.scrollToTop()
+        self.textView.scrollToTop()
         self.textView.animateScrolling()
         
         sender.isEnabled = false
     }
     
     func starWarsTextViewDidFinishScrolling(_ textView: StarWarsTextView) {
-        self.scrollButton.isEnabled = true
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
