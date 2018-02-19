@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'StarWarsTextView'
-  s.version          = '0.9.0'
+  s.version          = '0.9.1'
   s.summary          = 'Shows Star Wars intro style Text View'
   s.swift_version    = '4.0'
   s.description      = <<-DESC
@@ -19,9 +19,7 @@ Did You ever thought how cool would be to show Star Wars intro running text in y
 
   s.source_files = 'Library/*.swift'
   
-  s.resource_bundles = {
-     'StarWarsTextView' => ['Library/*.otf']
-  }
+  s.resources  = 'Library/*.otf'
 
   s.frameworks = 'UIKit'
 

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJB-VX-Qec" customClass="StarWarsTextView" customModule="StarWarsView" customModuleProvider="target">
-                                <rect key="frame" x="-90.029764688893195" y="15.37048946802561" width="500.05952937778687" height="457.5845431739599"/>
+                                <rect key="frame" x="85" y="-81" width="150" height="330"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="330" id="NbW-6c-d9D"/>
