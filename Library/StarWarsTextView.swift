@@ -88,12 +88,12 @@ open class StarWarsTextView : UITextView
         }
         
         // Setup Fonts
-        if !self.isFontRegistered
+        if !StarWarsTextView.isFontRegistered
         {
             let bundle = Bundle(for: StarWarsTextView.self)
-            self.isFontRegistered = UIFont.registerFont(bundle:bundle, fontName: "NewsGothicStd-Bold", fontExtension: ".otf")
+            StarWarsTextView.isFontRegistered = UIFont.registerFont(bundle:bundle, fontName: "NewsGothicStd-Bold", fontExtension: ".otf")
             
-            if self.isFontRegistered
+            if StarWarsTextView.isFontRegistered
             {
                 let size = self.font?.pointSize ?? 17
                 let font = UIFont(name: "News Gothic Std", size: size)
@@ -104,7 +104,7 @@ open class StarWarsTextView : UITextView
     
     // MARK:- Internal API
     private weak var scrollingTimer:Timer?
-    private var isFontRegistered:Bool = false
+    private static var isFontRegistered:Bool = false
     
     private func setupView()
     {
