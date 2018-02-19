@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'StarWarsTextView_Example' do
+  pod 'StarWarsTextView', :path => '../'
+
+  target 'StarWarsTextView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
