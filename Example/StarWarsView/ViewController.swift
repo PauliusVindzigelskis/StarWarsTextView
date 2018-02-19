@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StarWarsTextView
 
 class ViewController: UIViewController, StarWarsTextViewDelegate
 {
