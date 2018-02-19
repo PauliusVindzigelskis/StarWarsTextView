@@ -38,6 +38,26 @@ open class StarWarsTextView : UITextView
     public var xAngle:CGFloat = 45.0
     // MARK:- Public API
     
+    public override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        self.setupView()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setupView()
+    }
+    
+    private func setupView()
+    {
+        var transform:CATransform3D =  CATransform3DIdentity
+        transform.m34 = -self.inclinationRatio / 500.0;
+        transform = CATransform3DRotate(transform, xAngle * CGFloat.pi / 180.0, 1.0, 0.0, 0.0);
+        self.layer.transform = transform
+        
+        self.font = self.starWarsFont()
+    }
+    
     public func scrollToTop(animated:Bool = false)
     {
         let initialPoint = CGPoint(x: 0, y: -self.contentInset.top)
@@ -86,31 +106,22 @@ open class StarWarsTextView : UITextView
             insets.bottom = newInset
             self.contentInset = insets
         }
-        
-        // Setup Fonts
+    }
+    
+    func starWarsFont() -> UIFont
+    {
         if !StarWarsTextView.isFontRegistered
         {
             let bundle = Bundle(for: StarWarsTextView.self)
-            StarWarsTextView.isFontRegistered = UIFont.registerFont(bundle:bundle, fontName: "NewsGothicStd-Bold", fontExtension: ".otf")
-            
-            if StarWarsTextView.isFontRegistered
-            {
-                let size = self.font?.pointSize ?? 17
-                let font = UIFont(name: "News Gothic Std", size: size)
-                self.font = font
-            }
+            StarWarsTextView.isFontRegistered = UIFont.registerFont(bundle:bundle, fontName: "NewsGothicStd-Bold", fontExtension: "otf")
         }
+        
+        let size = self.font?.pointSize ?? 17
+        let font = UIFont(name: "News Gothic Std", size: size)
+        return font!
     }
     
     // MARK:- Internal API
     private weak var scrollingTimer:Timer?
     private static var isFontRegistered:Bool = false
-    
-    private func setupView()
-    {
-        var transform:CATransform3D =  CATransform3DIdentity
-        transform.m34 = -self.inclinationRatio / 500.0;
-        transform = CATransform3DRotate(transform, xAngle * CGFloat.pi / 180.0, 1.0, 0.0, 0.0);
-        self.layer.transform = transform
-    }
 }
