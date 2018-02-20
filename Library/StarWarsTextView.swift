@@ -16,12 +16,19 @@ import UIKit
 
 open class StarWarsTextView : UITextView
 {
+    /**
+     The delegate to respond of StarWars Text View notifications
+     */
     public weak var starWarsDelegate:StarWarsTextViewDelegate? = nil
     
     /**
      The speed of scrolling animation
      */
     public var scrollingSpeed:CGFloat = 10
+    
+    /**
+     Interval between recalculation of animation
+     */
     public var animationStepsInterval:TimeInterval = 0.2
     
     /**
@@ -35,7 +42,21 @@ open class StarWarsTextView : UITextView
      The angle of x Axis from viewer screen
      */
     public var xAngle:CGFloat = 45.0
-    // MARK:- Public API
+    
+    // MARK:- Class API
+    
+    public static func starWarsFont() -> UIFont
+    {
+        if !StarWarsTextView.isFontRegistered
+        {
+            let bundle = Bundle(for: StarWarsTextView.self)
+            StarWarsTextView.isFontRegistered = UIFont.registerFont(bundle:bundle, fontName: "NewsGothicStd-Bold", fontExtension: "otf")
+        }
+        let font = UIFont(name: "News Gothic Std", size: 17)
+        return font!
+    }
+    
+    // MARK:- Instance API
     
     public override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -54,7 +75,8 @@ open class StarWarsTextView : UITextView
         transform = CATransform3DRotate(transform, xAngle * CGFloat.pi / 180.0, 1.0, 0.0, 0.0);
         self.layer.transform = transform
         
-        self.font = self.starWarsFont()
+        let fontSize = self.font?.pointSize ?? 12
+        self.font = StarWarsTextView.starWarsFont().withSize(fontSize)
     }
     
     public func scrollToTop(animated:Bool = false)
@@ -105,19 +127,6 @@ open class StarWarsTextView : UITextView
             insets.bottom = newInset
             self.contentInset = insets
         }
-    }
-    
-    func starWarsFont() -> UIFont
-    {
-        if !StarWarsTextView.isFontRegistered
-        {
-            let bundle = Bundle(for: StarWarsTextView.self)
-            StarWarsTextView.isFontRegistered = UIFont.registerFont(bundle:bundle, fontName: "NewsGothicStd-Bold", fontExtension: "otf")
-        }
-        
-        let size = self.font?.pointSize ?? 17
-        let font = UIFont(name: "News Gothic Std", size: size)
-        return font!
     }
     
     // MARK:- Internal API
