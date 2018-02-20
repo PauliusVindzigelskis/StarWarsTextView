@@ -21,6 +21,7 @@ import UIKit
     @objc optional func starWarsTextViewDidFinishScrolling(_ textView:StarWarsTextView)
 }
 
+@IBDesignable
 open class StarWarsTextView : UITextView
 {
     /**
