@@ -22,4 +22,7 @@ Initilize via code or XIB/Storyboard
     public func animateScrolling()
 
 ## Demo
+<img width="160" alt="simulator screen shot - iphone se - 2018-02-20 at 12 02 43" src="https://user-images.githubusercontent.com/2383901/36440789-2e6d45a2-1636-11e8-88d4-0a595d786104.png"> <img width="160" alt="simulator screen shot - iphone se - 2018-02-20 at 12 02 36" src="https://user-images.githubusercontent.com/2383901/36440790-2e790c5c-1636-11e8-89ae-87726b30f98c.png">
+
+
 ![starwarsdemo2](https://user-images.githubusercontent.com/2383901/36433632-910386e0-1622-11e8-8915-4e68ae656fd0.gif)
