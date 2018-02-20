@@ -10,7 +10,14 @@ import UIKit
 
 @objc public protocol StarWarsTextViewDelegate : NSObjectProtocol
 {
+    /**
+     The animation of scrolling just started
+     */
     @objc optional func starWarsTextViewDidStartScrolling(_ textView:StarWarsTextView)
+    
+    /**
+     The animation of scrolling did end
+     */
     @objc optional func starWarsTextViewDidFinishScrolling(_ textView:StarWarsTextView)
 }
 
