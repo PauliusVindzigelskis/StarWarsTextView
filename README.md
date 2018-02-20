@@ -12,6 +12,14 @@ Includes original Star Wars font (News Gothic) and animation API to crawl from t
 
 Initilize via code or XIB/Storyboard
 
+### Delegate
+
+    protocol StarWarsTextViewDelegate : NSObjectProtocol
+    {
+        optional func starWarsTextViewDidStartScrolling(_ textView:StarWarsTextView)
+        optional func starWarsTextViewDidFinishScrolling(_ textView:StarWarsTextView)
+    }
+
 ### Public Properties
     public static func starWarsFont() -> UIFont
     
