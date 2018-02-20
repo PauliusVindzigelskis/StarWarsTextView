@@ -3,7 +3,7 @@
 Subclass of UITextView to present Star Wars style credits. 
 Includes original Star Wars font (News Gothic) and animation API to crawl from top to bottom slowly.
 
-<b><i>Note:</i></b> Suggested to setup through Xib/Storyboard as CALayer transformations will disrupt AutoLayout constraints. IBDesginables might help adjust view in screen
+<b><i>Note:</i></b> Suggested to setup through Xib/Storyboard as CALayer transformations will disrupt AutoLayout constrainted frames. IBDesginables might help adjust view in screen
 
 ## Podfile (for use with Cocoapods)
 `pod 'StarWarsTextView' `
