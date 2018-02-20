@@ -75,17 +75,6 @@ open class StarWarsTextView : UITextView
         self.setupView()
     }
     
-    private func setupView()
-    {
-        var transform:CATransform3D =  CATransform3DIdentity
-        transform.m34 = -self.inclinationRatio / 500.0;
-        transform = CATransform3DRotate(transform, xAngle * CGFloat.pi / 180.0, 1.0, 0.0, 0.0);
-        self.layer.transform = transform
-        
-        let fontSize = self.font?.pointSize ?? 12
-        self.font = StarWarsTextView.starWarsFont().withSize(fontSize)
-    }
-    
     public func scrollToTop(animated:Bool = false)
     {
         let initialPoint = CGPoint(x: 0, y: -self.contentInset.top)
@@ -120,7 +109,6 @@ open class StarWarsTextView : UITextView
     // MARK:- View lifecycle
     
     override open func layoutSubviews() {
-        self.setupView()
         super.layoutSubviews()
         
         // Setup insets
@@ -139,4 +127,15 @@ open class StarWarsTextView : UITextView
     // MARK:- Internal API
     private weak var scrollingTimer:Timer?
     private static var isFontRegistered:Bool = false
+    
+    private func setupView()
+    {
+        var transform:CATransform3D =  CATransform3DIdentity
+        transform.m34 = -self.inclinationRatio / 500.0;
+        transform = CATransform3DRotate(transform, xAngle * CGFloat.pi / 180.0, 1.0, 0.0, 0.0);
+        self.layer.transform = transform
+        
+        let fontSize = self.font?.pointSize ?? 12
+        self.font = StarWarsTextView.starWarsFont().withSize(fontSize)
+    }
 }
