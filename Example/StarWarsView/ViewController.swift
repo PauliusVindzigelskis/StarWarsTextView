@@ -28,9 +28,11 @@ class ViewController: UIViewController, StarWarsTextViewDelegate
         if self.textView.isCrawling
         {
             self.textView.stopCrawlingAnimation()
+            sender.setTitle("ANIMATE", for: .normal)
         } else {
             self.textView.scrollToTop()
             self.textView.startCrawlingAnimation()
+            sender.setTitle("STOP", for: .normal)
         }
     }
     
