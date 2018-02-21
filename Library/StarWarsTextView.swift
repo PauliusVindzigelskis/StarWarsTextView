@@ -51,6 +51,11 @@ open class StarWarsTextView : UITextView
      */
     public var xAngle:CGFloat = 45.0
     
+    public var isCrawling:Bool
+    {
+        return self.scrollingTimer != nil
+    }
+    
     // MARK:- Class API
     
     public static func starWarsFont() -> UIFont
@@ -82,8 +87,7 @@ open class StarWarsTextView : UITextView
         self.setContentOffset(initialPoint, animated: animated)
     }
     
-    
-    public func animateScrolling()
+    public func startCrawlingAnimation()
     {
         // Notify delegate
         self.starWarsDelegate?.starWarsTextViewDidStartScrolling?(self)
@@ -105,6 +109,11 @@ open class StarWarsTextView : UITextView
                 self.setContentOffset(scrollPoint, animated: true)
             }
         })
+    }
+    
+    public func stopCrawlingAnimation()
+    {
+        self.scrollingTimer?.invalidate()
     }
     
     // MARK:- View lifecycle

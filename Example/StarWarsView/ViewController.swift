@@ -25,10 +25,13 @@ class ViewController: UIViewController, StarWarsTextViewDelegate
     }
     
     @IBAction func animatePressed(_ sender: UIButton) {
-        self.textView.scrollToTop()
-        self.textView.animateScrolling()
-        
-        sender.isEnabled = false
+        if self.textView.isCrawling
+        {
+            self.textView.stopCrawlingAnimation()
+        } else {
+            self.textView.scrollToTop()
+            self.textView.startCrawlingAnimation()
+        }
     }
     
     func starWarsTextViewDidFinishScrolling(_ textView: StarWarsTextView) {
