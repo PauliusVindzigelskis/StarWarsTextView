@@ -23,16 +23,18 @@ Initilize via code or XIB/Storyboard
 ### Public Properties
     public static func starWarsFont() -> UIFont
     
-    public weak var starWarsDelegate:StarWarsTextViewDelegate? = nil
-    public var scrollingSpeed:CGFloat = 10
-    public var animationStepsInterval:TimeInterval = 0.2
-    public var inclinationRatio:CGFloat = 3.0
-    public var xAngle:CGFloat = 45.0
+    public weak var starWarsDelegate: StarWarsTextViewDelegate?
+    public var scrollingSpeed: CGFloat
+    public var animationStepsInterval: TimeInterval
+    public var inclinationRatio: CGFloat
+    public var xAngle: CGFloat
+    public var isCrawling: Bool
 
 ### Public Functions
 
-    public func scrollToTop(animated:Bool = false)
-    public func animateScrolling()
+    public func scrollToTop(animated: Bool = false)
+    public func startCrawlingAnimation()
+    public func stopCrawlingAnimation()
 
 ## Demo
 <img width="160" alt="simulator screen shot - iphone se - 2018-02-20 at 12 02 43" src="https://user-images.githubusercontent.com/2383901/36440789-2e6d45a2-1636-11e8-88d4-0a595d786104.png"> <img width="160" alt="simulator screen shot - iphone se - 2018-02-20 at 12 02 36" src="https://user-images.githubusercontent.com/2383901/36440790-2e790c5c-1636-11e8-89ae-87726b30f98c.png">
