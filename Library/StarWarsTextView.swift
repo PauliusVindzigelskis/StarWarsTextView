@@ -51,6 +51,9 @@ open class StarWarsTextView : UITextView
      */
     public var xAngle:CGFloat = 45.0
     
+    /**
+     Indication whether scrolling is animating right now
+     */
     public var isCrawling:Bool
     {
         return self.scrollingTimer != nil
@@ -58,6 +61,9 @@ open class StarWarsTextView : UITextView
     
     // MARK:- Class API
     
+    /**
+     Original font used in Star Wars movies
+     */
     public static func starWarsFont() -> UIFont
     {
         if !StarWarsTextView.isFontRegistered
@@ -81,12 +87,20 @@ open class StarWarsTextView : UITextView
         self.setupView()
     }
     
+    /**
+     Sets content offset to be on top (minus top inset)
+     
+     - parameter animated: whether to scroll with animation or not
+     */
     public func scrollToTop(animated:Bool = false)
     {
         let initialPoint = CGPoint(x: 0, y: -self.contentInset.top)
         self.setContentOffset(initialPoint, animated: animated)
     }
     
+    /**
+     Begins crawling animation
+     */
     public func startCrawlingAnimation()
     {
         // Notify delegate
@@ -111,6 +125,9 @@ open class StarWarsTextView : UITextView
         })
     }
     
+    /**
+     Stops crawling animation if animation present
+     */
     public func stopCrawlingAnimation()
     {
         self.scrollingTimer?.invalidate()
