@@ -126,12 +126,13 @@ open class StarWarsTextView : UITextView
     }
     
     /**
-     Stops crawling animation if animation present
+     Stops crawling animation if animation is present
      */
     public func stopCrawlingAnimation()
     {
         let shouldNotifyDelegate = self.isCrawling
         self.scrollingTimer?.invalidate()
+        
         if shouldNotifyDelegate
         {
             self.starWarsDelegate?.starWarsTextViewDidFinishCrawling?(self)
