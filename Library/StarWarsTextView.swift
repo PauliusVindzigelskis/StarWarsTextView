@@ -130,7 +130,7 @@ open class StarWarsTextView : UITextView
      */
     public func stopCrawlingAnimation()
     {
-        let shouldNotifyDelegate = self.scrollingTimer != nil
+        let shouldNotifyDelegate = self.isCrawling
         self.scrollingTimer?.invalidate()
         if shouldNotifyDelegate
         {
