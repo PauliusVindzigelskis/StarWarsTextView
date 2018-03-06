@@ -13,12 +13,12 @@ import UIKit
     /**
      The animation of scrolling just started
      */
-    @objc optional func starWarsTextViewDidStartScrolling(_ textView:StarWarsTextView)
+    @objc optional func starWarsTextViewDidStartCrawling(_ textView:StarWarsTextView)
     
     /**
      The animation of scrolling did end
      */
-    @objc optional func starWarsTextViewDidFinishScrolling(_ textView:StarWarsTextView)
+    @objc optional func starWarsTextViewDidFinishCrawling(_ textView:StarWarsTextView)
 }
 
 @IBDesignable
@@ -104,7 +104,7 @@ open class StarWarsTextView : UITextView
     public func startCrawlingAnimation()
     {
         // Notify delegate
-        self.starWarsDelegate?.starWarsTextViewDidStartScrolling?(self)
+        self.starWarsDelegate?.starWarsTextViewDidStartCrawling?(self)
         
         scrollingTimer = Timer.scheduledTimer(withTimeInterval: animationStepsInterval, repeats: true, block: { (timer) in
             let repeatInterval:CGFloat = CGFloat(timer.timeInterval)
@@ -116,7 +116,7 @@ open class StarWarsTextView : UITextView
                 timer.invalidate()
                 
                 // Notify delegate
-                self.starWarsDelegate?.starWarsTextViewDidFinishScrolling?(self)
+                self.starWarsDelegate?.starWarsTextViewDidFinishCrawling?(self)
             } else {
                 
                 scrollPoint.y += self.scrollingSpeed * repeatInterval
