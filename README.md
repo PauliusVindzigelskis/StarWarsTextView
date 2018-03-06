@@ -1,5 +1,10 @@
 # StarWarsTextView
 
+[![Version](https://img.shields.io/cocoapods/v/StarWarsTextView.svg)](http://cocoapods.org/pods/StarWarsTextView)
+[![Platform](https://img.shields.io/badge/platform-iOS-blue.svg)](https://github.com/PauliusVindzigelskis/StarWarsTextView)
+[![Language](https://img.shields.io/badge/language-Swift-blue.svg)](https://github.com/PauliusVindzigelskis/StarWarsTextView)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/PauliusVindzigelskis/NGSTutorial/master/LICENSE)
+
 Subclass of UITextView to present Star Wars style credits. 
 Includes original Star Wars font (News Gothic) and animation API to crawl from top to bottom slowly.
 
