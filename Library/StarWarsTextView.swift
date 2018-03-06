@@ -18,7 +18,7 @@ import UIKit
     /**
      The animation of scrolling did end
      */
-    @objc optional func starWarsTextViewDidFinishCrawling(_ textView:StarWarsTextView)
+    @objc optional func starWarsTextViewDidStopCrawling(_ textView:StarWarsTextView, finished:Bool)
 }
 
 @IBDesignable
@@ -103,6 +103,9 @@ open class StarWarsTextView : UITextView
      */
     public func startCrawlingAnimation()
     {
+        // Make sure animation is not running yet
+        guard !self.isCrawling else { return }
+        
         // Notify delegate
         self.starWarsDelegate?.starWarsTextViewDidStartCrawling?(self)
         
@@ -112,11 +115,11 @@ open class StarWarsTextView : UITextView
             var scrollPoint = self.contentOffset
             if scrollPoint.y >= self.contentSize.height
             {
-                // stop timer and scrolling
+                // Stop timer (and scrolling) as text view has reached end
                 timer.invalidate()
                 
                 // Notify delegate
-                self.starWarsDelegate?.starWarsTextViewDidFinishCrawling?(self)
+                self.starWarsDelegate?.starWarsTextViewDidStopCrawling?(self, finished: true)
             } else {
                 
                 scrollPoint.y += self.scrollingSpeed * repeatInterval
@@ -130,12 +133,13 @@ open class StarWarsTextView : UITextView
      */
     public func stopCrawlingAnimation()
     {
-        let shouldNotifyDelegate = self.isCrawling
-        self.scrollingTimer?.invalidate()
-        
-        if shouldNotifyDelegate
+        if self.isCrawling
         {
-            self.starWarsDelegate?.starWarsTextViewDidFinishCrawling?(self)
+            // Stop timer (and scrolling) as text view has reached end
+            self.scrollingTimer?.invalidate()
+            
+            // Notify delegate
+            self.starWarsDelegate?.starWarsTextViewDidStopCrawling?(self, finished: false)
         }
     }
     
