@@ -30,16 +30,6 @@ open class StarWarsTextView : UITextView
     public weak var starWarsDelegate:StarWarsTextViewDelegate? = nil
     
     /**
-     The speed of scrolling animation
-     */
-    public var scrollingSpeed:CGFloat = 10
-    
-    /**
-     Interval between recalculation of animation
-     */
-    public var animationStepsInterval:TimeInterval = 0.2
-    
-    /**
      The higher ratio, the more wide the bottom and narrow top.
      
      Note: As transformation is added to view's layer, Your Auto Layout constraints might not make sense any more. Make adjustments accordingly
@@ -50,6 +40,16 @@ open class StarWarsTextView : UITextView
      The angle of x Axis from viewer screen
      */
     public var xAngle:CGFloat = 45.0
+    
+    /**
+     The speed of scrolling animation
+     */
+    public var crawlingSpeed:CGFloat = 10
+    
+    /**
+     Interval between recalculation of animation
+     */
+    public var crawlingStepInterval:TimeInterval = 0.2
     
     /**
      Indication whether scrolling is animating right now
@@ -109,7 +109,7 @@ open class StarWarsTextView : UITextView
         // Notify delegate
         self.starWarsDelegate?.starWarsTextViewDidStartCrawling?(self)
         
-        scrollingTimer = Timer.scheduledTimer(withTimeInterval: animationStepsInterval, repeats: true, block: { (timer) in
+        scrollingTimer = Timer.scheduledTimer(withTimeInterval: crawlingStepInterval, repeats: true, block: { (timer) in
             let repeatInterval:CGFloat = CGFloat(timer.timeInterval)
             
             var scrollPoint = self.contentOffset
@@ -122,7 +122,7 @@ open class StarWarsTextView : UITextView
                 self.starWarsDelegate?.starWarsTextViewDidStopCrawling?(self, finished: true)
             } else {
                 
-                scrollPoint.y += self.scrollingSpeed * repeatInterval
+                scrollPoint.y += self.crawlingSpeed * repeatInterval
                 self.setContentOffset(scrollPoint, animated: true)
             }
         })
