@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'StarWarsTextView'
-  s.version          = '1.2.0'
+  s.version          = '1.3.0'
   s.summary          = 'Shows Star Wars intro style Text View'
   s.swift_version    = '4.0'
   s.description      = <<-DESC
